@@ -47,7 +47,7 @@ export default function HackerTreasureHunt() {
               🧠 Hacker Treasure Hunt
             </h1>
             <p className="text-lg mb-6">
-              Welcome, Agent. You've been selected to breach a fortified digital stronghold. 
+              Welcome, Agent. You&apos;ve been selected to breach a fortified digital stronghold. 
               Three security layers lie ahead — each harder than the last. 
               Your wits, logic, and eyes will be tested. Decode, deduce, and uncover 
               the secrets hidden in the shadows.
@@ -142,7 +142,7 @@ export default function HackerTreasureHunt() {
               Checkpoint 3: The Mirror of Truth
             </h2>
             <p className="text-xl text-[#99ccff] mb-4">
-            "I speak twice but only one is true. Flip me and the lie becomes the path. Look for the contratdiction as contradiction is the key."
+            &quot;I speak twice but only one is true. Flip me and the lie becomes the path. Look for the contratdiction as contradiction is the key.&quot;
             </p>
             <div className="text-3xl font-bold my-6 text-white drop-shadow-[0_0_8px_#00ffff]">
               THE GATE HIDES THE SIGN<br />
@@ -174,7 +174,7 @@ export default function HackerTreasureHunt() {
               Mission Complete!
             </h2>
             <p className="text-2xl mb-4">
-              You've successfully breached the system!
+              You&apos;ve successfully breached the system!
             </p>
             <p className="text-xl mb-8">
             Here is the key to the final puzzle : portal

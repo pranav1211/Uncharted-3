@@ -94,7 +94,7 @@ export default function GridOfSecrets() {
       document.removeEventListener('keydown', handleKeyDown);
       clearInterval(shuffleInterval);
     };
-  }, []);  // No need to add createGrid as dependency, it doesn't depend on any state or props
+  }, []);  // createGrid is defined in component scope so doesn't need to be a dependency
 
   const shuffleGrid = () => {
     setGridItems(prevItems => [...prevItems].sort(() => Math.random() - 0.5));
