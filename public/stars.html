@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Constellation Connector</title>
+    <meta name="description" content="Connect the stars to reveal their secrets" />
+    <meta name="author" content="Lovable" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --primary: #9b87f5;
+        --primary-foreground: #ffffff;
+        --secondary: #1A1F2C;
+        --secondary-foreground: #ffffff;
+        --muted: #6E59A5;
+        --muted-foreground: #D6BCFA;
+        --background: #0a0a16;
+        --foreground: #ffffff;
+        --border: #2A253D;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--foreground);
+        font-family: 'Space Grotesk', sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Stars background for entire page */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .container {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        position: relative;
+        z-index: 10;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: var(--primary);
+        animation: pulse 3s infinite alternate;
+      }
+
+      @keyframes pulse {
+        0% { text-shadow: 0 0 5px rgba(155, 135, 245, 0.3); }
+        100% { text-shadow: 0 0 15px rgba(155, 135, 245, 0.7), 0 0 20px rgba(155, 135, 245, 0.5); }
+      }
+
+      @keyframes glow {
+        0% { box-shadow: 0 0 5px rgba(155, 135, 245, 0.3); }
+        100% { box-shadow: 0 0 15px rgba(155, 135, 245, 0.7), 0 0 20px rgba(155, 135, 245, 0.5); }
+      }
+
+      .level-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .level-indicator {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: var(--secondary);
+        border: 2px solid var(--border);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .level-indicator:hover {
+        transform: scale(1.1);
+      }
+
+      .level-indicator.active {
+        background-color: var(--primary);
+        border-color: var(--primary-foreground);
+      }
+
+      .level-indicator.completed:after {
+        content: '✓';
+        color: var(--primary-foreground);
+      }
+
+      .level-header {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .level-header h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .level-header .instruction {
+        color: var(--muted-foreground);
+        margin-bottom: 0.5rem;
+      }
+
+      .level-header .description {
+        margin-bottom: 1rem;
+      }
+
+      .clues {
+        background-color: rgba(26, 31, 44, 0.5);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--border);
+      }
+
+      .clue {
+        margin-bottom: 0.5rem;
+      }
+
+      .game-field {
+        position: relative;
+        width: 800px;
+        height: 600px;
+        margin: 0 auto 1.5rem;
+        border: 2px solid var(--border);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        background-color: rgba(26, 31, 44, 0.2);
+      }
+
+      .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0 0 3px white;
+        z-index: 1;
+      }
+
+      .star-dot {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        z-index: 10;
+        color: black;
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      .star-dot:hover {
+        transform: scale(1.2) !important;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .btn {
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+      }
+
+      .btn-primary:hover {
+        background-color: #8b76e5;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        color: var(--primary);
+        border: 1px solid var(--primary);
+      }
+
+      .btn-outline:hover {
+        background-color: rgba(155, 135, 245, 0.1);
+      }
+
+      .btn-success {
+        background-color: #4aff91;
+        color: #1A1F2C;
+      }
+
+      .btn-success:hover {
+        background-color: #3edf7d;
+      }
+
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .success-message {
+        text-align: center;
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, rgba(75, 0, 130, 0.5), rgba(75, 0, 255, 0.3), rgba(75, 0, 130, 0.5));
+        border-radius: 0.5rem;
+        border: 1px solid var(--primary);
+      }
+
+      .success-message h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        animation: pulse 1.5s infinite alternate;
+      }
+
+      .password-display {
+        background-color: rgba(26, 31, 44, 0.8);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--primary);
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .password-display p:first-child {
+        margin-bottom: 0.5rem;
+      }
+
+      .password-display .final-password {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        animation: pulse 2s infinite alternate;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .toast {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: var(--secondary);
+        border: 1px solid var(--border);
+        color: var(--foreground);
+        z-index: 100;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(1rem);
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .toast.success {
+        border-color: #4aff91;
+      }
+
+      .toast.error {
+        border-color: #ff4a4a;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Constellation Connector</h1>
+
+      <div class="level-indicators" id="level-indicators"></div>
+
+      <div class="level-header">
+        <h2 id="level-title"></h2>
+        <p class="instruction" id="level-instruction"></p>
+        <p class="description" id="level-description"></p>
+      </div>
+
+      <div class="clues" id="clues-container">
+        <!-- Clues will be dynamically populated -->
+      </div>
+
+      <div class="game-field" id="game-field">
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <!-- Stars will be dynamically populated -->
+      </div>
+
+      <div class="buttons">
+        <button class="btn btn-outline" id="reset-btn">Reset Stars</button>
+        <button class="btn btn-primary" id="check-btn">Check Solution</button>
+        <button class="btn btn-success hidden" id="next-btn">Next Level</button>
+      </div>
+
+      <div class="success-message hidden" id="success-message">
+        <h2>🎉 Congratulations! You've unlocked all constellations!</h2>
+        <div class="password-display">
+          <p>The hidden password is:</p>
+          <p class="final-password" id="final-password">CELESTIAL_HARMONY</p>
+        </div>
+      </div>
+
+      <div class="toast" id="toast"></div>
+    </div>
+
+    <script>
+      // Game data structure
+      const levels = [
+        {
+          id: 1,
+          name: "Decode the Stars",
+          instruction: "Connect the numbered stars in the correct sequence to solve the puzzle.",
+          description: "Solve the clues to determine which stars to connect and in what order.",
+          primaryColor: "#ffcc00",
+          stars: [
+            { id: "star-6", x: 130, y: 100, size: 20, value: 6, isPartOfConstellation: true },
+            { id: "star-13", x: 200, y: 450, size: 20, value: 13, isPartOfConstellation: true },
+            { id: "star-25", x: 300, y: 170, size: 20, value: 25, isPartOfConstellation: true },
+            { id: "star-7", x: 500, y: 350, size: 20, value: 7, isPartOfConstellation: true },
+            { id: "star-29", x: 400, y: 380, size: 20, value: 29, isPartOfConstellation: true },
+            { id: "star-20", x: 250, y: 100, size: 20, value: 20, isPartOfConstellation: true },
+            { id: "star-42", x: 450, y: 100, size: 20, value: 42, isPartOfConstellation: true },
+            { id: "star-56", x: 700, y: 280, size: 20, value: 56, isPartOfConstellation: true },
+            { id: "star-19", x: 200, y: 170, size: 20, value: 19, isPartOfConstellation: true },
+            { id: "star-9", x: 200, y: 300, size: 20, value: 9, isPartOfConstellation: true },
+            { id: "star-17", x: 450, y: 500, size: 20, value: 17, isPartOfConstellation: true },
+            { id: "star-33", x: 530, y: 300, size: 20, value: 33, isPartOfConstellation: true },
+            { id: "star-30", x: 300, y: 500, size: 20, value: 30, isPartOfConstellation: true },
+            { id: "star-11", x: 620, y: 400, size: 20, value: 11, isPartOfConstellation: true },
+            { id: "star-90", x: 600, y: 100, size: 20, value: 90, isPartOfConstellation: true },
+            { id: "star-15", x: 130, y: 300, size: 20, value: 15, isPartOfConstellation: true },
+          ],
+          // 6 (sqrt 36) -> 9 (4²-7) -> 7 (2+0+2+3) -> 29 (Feb leap days) -> 30 (2*3*5) -> 90 (right angle) -> 42 (hex 2A) -> 17 (binary 10001)
+          solution: ["star-6", "star-9", "star-7", "star-29", "star-30", "star-90", "star-42", "star-17"],
+          clues: [
+            "1. Start with the star that equals the square root of 36.",
+            "2. Connect to the star that is the result of 4² - 7.",
+            "3. Connect to the star that is the sum of all digits in 2023.",
+            "4. Connect to the star that represents the number of days in February in a leap year.",
+            "5. Connect to the star that is the product of the first three prime numbers.",
+            "6. Connect to the star that is the number of degrees in a right angle.",
+            "7. Connect to the star that is the decimal value of hexadecimal 2A.",
+            "8. Finish with the star that represents the binary number 10001 in decimal."
+          ]
+        },
+        {
+          id: 2,
+          name: "Orion: The Hunter",
+          instruction: "Connect the stars to form the Orion constellation according to its proper stellar pattern.",
+          description: "Connect the stars in order to trace the actual shape of the Orion constellation as seen in the night sky.",
+          primaryColor: "#4dabf7", // Blue
+          stars: [
+            // Main bright stars positioned to match actual Orion pattern
+            { id: "orion-1", x: 400, y: 100, size: 25, name: "Betelgeuse (α Orionis)", isPartOfConstellation: true }, // Red supergiant at Orion's shoulder
+            { id: "orion-2", x: 500, y: 400, size: 23, name: "Rigel (β Orionis)", isPartOfConstellation: true }, // Blue-white supergiant at Orion's foot
+            { id: "orion-3", x: 200, y: 150, size: 10, name: "Random Star", isPartOfConstellation: false },
+            { id: "orion-4", x: 300, y: 150, size: 21, name: "Bellatrix (γ Orionis)", isPartOfConstellation: true }, // Other shoulder of Orion
+            { id: "orion-5", x: 350, y: 250, size: 20, name: "Mintaka (δ Orionis)", isPartOfConstellation: true }, // Right star in Orion's belt
+            { id: "orion-6", x: 400, y: 250, size: 19, name: "Alnilam (ε Orionis)", isPartOfConstellation: true }, // Middle star in Orion's belt
+            { id: "orion-7", x: 450, y: 250, size: 18, name: "Alnitak (ζ Orionis)", isPartOfConstellation: true }, // Left star in Orion's belt
+            { id: "orion-8", x: 350, y: 350, size: 15, name: "Saiph (κ Orionis)", isPartOfConstellation: true }, // Other foot of Orion
+            { id: "orion-9", x: 430, y: 170, size: 12, name: "Meissa (λ Orionis)", isPartOfConstellation: true }, // Head of Orion
+            { id: "orion-10", x: 340, y: 430, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "orion-11", x: 600, y: 450, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "orion-12", x: 150, y: 350, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "orion-13", x: 650, y: 200, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "orion-14", x: 250, y: 400, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "orion-15", x: 550, y: 280, size: 10, name: "Star", isPartOfConstellation: false },
+          ],
+          // Connect in astronomical pattern: start at Betelgeuse, trace to Bellatrix, to Mintaka, across belt to Alnitak, 
+          // down to Saiph, across to Rigel, back up to Bellatrix, then up to Meissa for the head
+          solution: ["orion-1", "orion-4", "orion-5", "orion-6", "orion-7", "orion-8", "orion-2", "orion-4", "orion-9"],
+          clues: [
+            "1. Orion is known as 'The Hunter' in Greek mythology.",
+            "2. The distinctive three stars in a row form Orion's belt.",
+            "3. Betelgeuse is the bright reddish star at Orion's right shoulder.",
+            "4. Rigel is the bright bluish star at Orion's left foot.",
+            "5. Google: 'What color is Orion associated with in astronomy?' for a clue to the final password."
+          ]
+        },
+        {
+          id: 3,
+          name: "Ursa Major: The Great Bear",
+          instruction: "Connect the stars to form the Big Dipper asterism within Ursa Major.",
+          description: "The Big Dipper is one of the most recognizable patterns in the northern sky. Connect the stars in their proper sequence to form this famous asterism.",
+          primaryColor: "#ff6b6b", // Red
+          stars: [
+            // Stars positioned to match actual Big Dipper pattern
+            { id: "ursa-1", x: 300, y: 150, size: 25, name: "Dubhe (α UMa)", isPartOfConstellation: true },      // Back edge of the bowl
+            { id: "ursa-2", x: 380, y: 180, size: 23, name: "Merak (β UMa)", isPartOfConstellation: true },      // Bottom edge of the bowl
+            { id: "ursa-3", x: 450, y: 220, size: 20, name: "Phecda (γ UMa)", isPartOfConstellation: true },     // Bottom front of the bowl
+            { id: "ursa-4", x: 520, y: 190, size: 19, name: "Megrez (δ UMa)", isPartOfConstellation: true },     // Top front of the bowl
+            { id: "ursa-5", x: 580, y: 230, size: 22, name: "Alioth (ε UMa)", isPartOfConstellation: true },     // First star in the handle
+            { id: "ursa-6", x: 640, y: 280, size: 21, name: "Mizar (ζ UMa)", isPartOfConstellation: true },      // Middle star in the handle
+            { id: "ursa-7", x: 690, y: 350, size: 18, name: "Alkaid (η UMa)", isPartOfConstellation: true },     // End of the handle
+            { id: "ursa-8", x: 250, y: 300, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "ursa-9", x: 450, y: 400, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "ursa-10", x: 350, y: 350, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "ursa-11", x: 550, y: 150, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "ursa-12", x: 200, y: 250, size: 10, name: "Star", isPartOfConstellation: false },
+          ],
+          // Connect in astronomical pattern: around the bowl and then along the handle
+          solution: ["ursa-1", "ursa-2", "ursa-3", "ursa-4", "ursa-1", "ursa-4", "ursa-5", "ursa-6", "ursa-7"],
+          clues: [
+            "1. The Big Dipper looks like a ladle or a plow.",
+            "2. Start with Dubhe and Merak - they point toward the North Star (Polaris).",
+            "3. Connect the four stars that form the 'bowl' of the dipper.",
+            "4. Then connect the three stars that form the 'handle' of the dipper.",
+            "5. Google: 'What color is Ursa Major associated with in traditional astronomy?' for a clue to the final password."
+          ]
+        },
+        {
+          id: 4,
+          name: "Cassiopeia: The Queen",
+          instruction: "Connect the stars to form the distinctive W-shape of Cassiopeia.",
+          description: "Cassiopeia is one of the most recognizable constellations, resembling a 'W' or 'M' shape depending on its orientation in the sky.",
+          primaryColor: "#8B4513", // Brown
+          stars: [
+            // Stars positioned to match actual W pattern of Cassiopeia
+            { id: "cass-1", x: 200, y: 200, size: 24, name: "Segin (ε Cas)", isPartOfConstellation: true },     // Leftmost star of the W
+            { id: "cass-2", x: 300, y: 300, size: 22, name: "Ruchbah (δ Cas)", isPartOfConstellation: true },   // Second point of the W
+            { id: "cass-3", x: 400, y: 200, size: 25, name: "Gamma Cas (γ Cas)", isPartOfConstellation: true }, // Middle point of the W
+            { id: "cass-4", x: 500, y: 300, size: 26, name: "Schedar (α Cas)", isPartOfConstellation: true },   // Fourth point of the W
+            { id: "cass-5", x: 600, y: 200, size: 23, name: "Caph (β Cas)", isPartOfConstellation: true },      // Rightmost star of the W
+            { id: "cass-6", x: 350, y: 400, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "cass-7", x: 250, y: 350, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "cass-8", x: 450, y: 350, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "cass-9", x: 550, y: 320, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "cass-10", x: 400, y: 100, size: 10, name: "Star", isPartOfConstellation: false },
+          ],
+          // Connect in the W pattern from left to right
+          solution: ["cass-1", "cass-2", "cass-3", "cass-4", "cass-5"],
+          clues: [
+            "1. Cassiopeia was a vain queen in Greek mythology.",
+            "2. The constellation forms a distinctive 'W' shape in the northern sky.",
+            "3. Connect the five main stars from left to right to form the zigzag pattern.",
+            "4. Cassiopeia is visible year-round in the Northern Hemisphere.",
+            "5. Google: 'What color is Cassiopeia associated with in star charts?' for a clue to the final password."
+          ]
+        },
+        {
+          id: 5,
+          name: "Leo: The Lion",
+          instruction: "Connect the stars to form the Leo constellation, tracing the lion's shape.",
+          description: "Leo represents a lion in the night sky. Connect the stars to outline the lion's head, mane, and body.",
+          primaryColor: "#FFD700", // Gold
+          stars: [
+            // Stars positioned to match actual Leo pattern
+            { id: "leo-1", x: 400, y: 220, size: 26, name: "Regulus (α Leonis)", isPartOfConstellation: true },     // Heart of the lion
+            { id: "leo-2", x: 520, y: 180, size: 22, name: "Denebola (β Leonis)", isPartOfConstellation: true },    // Tail of the lion
+            { id: "leo-3", x: 240, y: 260, size: 20, name: "Algieba (γ Leonis)", isPartOfConstellation: true },     // Neck of the lion
+            { id: "leo-4", x: 280, y: 340, size: 19, name: "Zosma (δ Leonis)", isPartOfConstellation: true },       // Back of the lion
+            { id: "leo-5", x: 370, y: 300, size: 18, name: "Epsilon Leonis (ε Leo)", isPartOfConstellation: true }, // Flank of the lion
+            { id: "leo-6", x: 310, y: 190, size: 17, name: "Adhafera (ζ Leonis)", isPartOfConstellation: true },    // Mane of the lion
+            { id: "leo-7", x: 210, y: 200, size: 16, name: "Rasalas (μ Leonis)", isPartOfConstellation: true },     // Head of the lion
+            { id: "leo-8", x: 180, y: 130, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "leo-9", x: 550, y: 250, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "leo-10", x: 430, y: 400, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "leo-11", x: 200, y: 400, size: 10, name: "Star", isPartOfConstellation: false },
+            { id: "leo-12", x: 480, y: 150, size: 10, name: "Star", isPartOfConstellation: false },
+          ],
+          // Connect in pattern to trace the lion shape
+          solution: ["leo-7", "leo-6", "leo-3", "leo-1", "leo-5", "leo-4", "leo-2"],
+          clues: [
+            "1. Leo represents a lion in Greek and Roman mythology.",
+            "2. Begin with the star that forms the lion's head.",
+            "3. The brightest star, Regulus, marks the heart of the lion.",
+            "4. Denebola marks the lion's tail at the eastern end of the constellation.",
+            "5. The distinctive sickle pattern forms the lion's mane and head.",
+            "6. Google: 'What color is Leo associated with in astronomical traditions?' for a clue to the final password."
+          ]
+        }
+      ];
+
+      // Game state
+      const gameState = {
+        currentLevel: 1,
+        completedLevels: [],
+        selectedStars: [],
+        levelCompleted: false
+      };
+
+      // DOM elements
+      const levelTitle = document.getElementById("level-title");
+      const levelInstruction = document.getElementById("level-instruction");
+      const levelDescription = document.getElementById("level-description");
+      const cluesContainer = document.getElementById("clues-container");
+      const gameField = document.getElementById("game-field");
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      const resetBtn = document.getElementById("reset-btn");
+      const checkBtn = document.getElementById("check-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const successMessage = document.getElementById("success-message");
+      const finalPassword = document.getElementById("final-password");
+      const levelIndicators = document.getElementById("level-indicators");
+      const toast = document.getElementById("toast");
+
+      // Create background stars for the entire body
+      function createBackgroundStars() {
+        // Create stars for the entire body
+        for (let i = 0; i < 800; i++) {
+          const star = document.createElement("div");
+          star.className = "star";
+          star.style.left = Math.random() * 100 + "%";
+          star.style.top = Math.random() * 100 + "%";
+
+          // Vary the star sizes for more realism
+          const size = Math.random() * 2 + 1;
+          star.style.width = size + "px";
+          star.style.height = size + "px";
+
+          // Add more realism with varied opacity
+          star.style.opacity = Math.random() * 0.8 + 0.2;
+
+          // Add occasional twinkle animation
+          if (Math.random() > 0.7) {
+            star.style.animation = `pulse ${2 + Math.random() * 3}s infinite alternate`;
+          }
+
+          document.body.appendChild(star);
+        }
+      }
+
+      // Initialize the game
+      function initGame() {
+        createBackgroundStars();
+        createLevelIndicators();
+        loadLevel(gameState.currentLevel);
+        setupEventListeners();
+      }
+
+      // Create level indicators at the top
+      function createLevelIndicators() {
+        for (let i = 0; i < levels.length; i++) {
+          const indicator = document.createElement("div");
+          indicator.className = "level-indicator";
+          indicator.textContent = i + 1;
+          indicator.dataset.level = i + 1;
+          
+          if (i + 1 === gameState.currentLevel) {
+            indicator.classList.add("active");
+          }
+          
+          indicator.addEventListener("click", () => {
+            if (gameState.completedLevels.includes(i + 1) || i + 1 === gameState.currentLevel) {
+              loadLevel(i + 1);
+            }
+          });
+          
+          levelIndicators.appendChild(indicator);
+        }
+      }
+
+      // Load a specific level
+      function loadLevel(levelId) {
+        gameState.currentLevel = levelId;
+        gameState.selectedStars = [];
+        gameState.levelCompleted = false;
+        
+        const level = levels.find(l => l.id === levelId);
+        
+        // Update UI
+        levelTitle.textContent = level.name;
+        levelInstruction.textContent = level.instruction;
+        levelDescription.textContent = level.description;
+        
+        // Update level indicators
+        const indicators = document.querySelectorAll(".level-indicator");
+        indicators.forEach(indicator => {
+          indicator.classList.remove("active");
+          if (parseInt(indicator.dataset.level) === levelId) {
+            indicator.classList.add("active");
+          }
+        });
+        
+        // Populate clues
+        cluesContainer.innerHTML = "";
+        level.clues.forEach(clue => {
+          const clueElement = document.createElement("div");
+          clueElement.className = "clue";
+          clueElement.textContent = clue;
+          cluesContainer.appendChild(clueElement);
+        });
+        
+        // Clear the game field and create stars
+        gameField.innerHTML = "";
+        gameField.appendChild(canvas);
+        createStars(level);
+        
+        // Reset UI state
+        resetBtn.disabled = false;
+        checkBtn.disabled = false;
+        nextBtn.classList.add("hidden");
+        
+        // Update completed indicators
+        if (gameState.completedLevels.includes(levelId)) {
+          const indicator = document.querySelector(`.level-indicator[data-level="${levelId}"]`);
+          indicator.classList.add("completed");
+        }
+      }
+
+      // Create stars for the current level
+      function createStars(level) {
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Create random small background stars on canvas
+        for (let i = 0; i < 200; i++) {
+          ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.3})`;
+          ctx.beginPath();
+          ctx.arc(
+            Math.random() * canvas.width,
+            Math.random() * canvas.height,
+            Math.random() * 1.5 + 0.5,
+            0,
+            Math.PI * 2
+          );
+          ctx.fill();
+        }
+
+        // Create main interactive stars
+        level.stars.forEach(star => {
+          const starElement = document.createElement("div");
+          starElement.id = star.id;
+          starElement.className = "star-dot";
+          starElement.style.left = `${star.x - star.size / 2}px`;
+          starElement.style.top = `${star.y - star.size / 2}px`;
+          starElement.style.width = `${star.size}px`;
+          starElement.style.height = `${star.size}px`;
+          
+          // Determine star's appearance
+          if (star.isPartOfConstellation) {
+            const brightness = 0.5 + (star.size / 30) * 0.5; // Brighter for larger stars
+            starElement.style.backgroundColor = level.primaryColor;
+            starElement.style.boxShadow = `0 0 ${star.size / 2}px rgba(255, 255, 255, ${brightness})`;
+            starElement.style.transform = `scale(${0.8 + star.size / 50})`;
+            // For first level stars with numbers
+            if (level.id === 1) {
+              starElement.textContent = star.value;
+            }
+          } else {
+            // Non-constellation stars are dimmer
+            starElement.style.backgroundColor = "#cccccc";
+            starElement.style.opacity = "0.6";
+            starElement.style.boxShadow = "0 0 5px rgba(255, 255, 255, 0.3)";
+            starElement.style.transform = "scale(0.8)";
+          }
+          
+          // Add star to game field
+          gameField.appendChild(starElement);
+          
+          // Add event listener
+          starElement.addEventListener("click", () => {
+            if (!gameState.levelCompleted) {
+              toggleStarSelection(star.id);
+            }
+          });
+        });
+      }
+
+      // Toggle star selection
+      function toggleStarSelection(starId) {
+        const starIndex = gameState.selectedStars.indexOf(starId);
+        const starElement = document.getElementById(starId);
+        
+        if (starIndex === -1) {
+          // Star is not selected, add it
+          gameState.selectedStars.push(starId);
+          starElement.style.boxShadow = "0 0 15px white, 0 0 30px white";
+          starElement.style.border = "2px solid white";
+          starElement.style.zIndex = "20";
+
+          // Draw lines between stars
+          drawConnections();
+        } else {
+          // Star is already selected, remove it and all stars after it
+          gameState.selectedStars = gameState.selectedStars.slice(0, starIndex);
+          resetStarAppearance();
+          drawConnections();
+        }
+      }
+
+      // Draw connections between selected stars
+      function drawConnections() {
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Redraw background stars
+        for (let i = 0; i < 200; i++) {
+          ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.3})`;
+          ctx.beginPath();
+          ctx.arc(
+            Math.random() * canvas.width,
+            Math.random() * canvas.height,
+            Math.random() * 1.5 + 0.5,
+            0,
+            Math.PI * 2
+          );
+          ctx.fill();
+        }
+
+        // Draw connections
+        if (gameState.selectedStars.length > 1) {
+          const currentLevel = levels.find(l => l.id === gameState.currentLevel);
+          ctx.strokeStyle = currentLevel.primaryColor;
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          
+          for (let i = 0; i < gameState.selectedStars.length; i++) {
+            const starId = gameState.selectedStars[i];
+            const starElement = document.getElementById(starId);
+            
+            // Get star center position
+            const x = parseInt(starElement.style.left) + parseInt(starElement.style.width) / 2;
+            const y = parseInt(starElement.style.top) + parseInt(starElement.style.height) / 2;
+            
+            if (i === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              ctx.lineTo(x, y);
+            }
+          }
+          
+          ctx.stroke();
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = currentLevel.primaryColor;
+        }
+      }
+
+      // Reset star appearance
+      function resetStarAppearance() {
+        const currentLevel = levels.find(l => l.id === gameState.currentLevel);
+        
+        currentLevel.stars.forEach(star => {
+          const starElement = document.getElementById(star.id);
+          starElement.style.border = "none";
+          starElement.style.zIndex = "10";
+          
+          if (star.isPartOfConstellation) {
+            const brightness = 0.5 + (star.size / 30) * 0.5;
+            starElement.style.boxShadow = `0 0 ${star.size / 2}px rgba(255, 255, 255, ${brightness})`;
+          } else {
+            starElement.style.boxShadow = "0 0 5px rgba(255, 255, 255, 0.3)";
+          }
+        });
+        
+        // Clear selected stars and connections
+        gameState.selectedStars = [];
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+
+      // Check the solution
+      function checkSolution() {
+        const currentLevel = levels.find(l => l.id === gameState.currentLevel);
+        const solution = currentLevel.solution;
+        
+        if (arraysEqual(gameState.selectedStars, solution)) {
+          // Solution is correct
+          gameState.levelCompleted = true;
+          if (!gameState.completedLevels.includes(gameState.currentLevel)) {
+            gameState.completedLevels.push(gameState.currentLevel);
+          }
+          
+          // Update UI
+          checkBtn.disabled = true;
+          resetBtn.disabled = true;
+          
+          // Update level indicator
+          const indicator = document.querySelector(`.level-indicator[data-level="${gameState.currentLevel}"]`);
+          indicator.classList.add("completed");
+          
+          if (gameState.currentLevel < levels.length) {
+            nextBtn.classList.remove("hidden");
+            showToast("Correct! You've solved this constellation!", "success");
+          } else {
+            // Final level completed
+            successMessage.classList.remove("hidden");
+            finalPassword.textContent = "COSMIC_VOYAGER";
+            showToast("Congratulations! You've completed all levels!", "success");
+          }
+        } else {
+          showToast("That's not quite right. Try again!", "error");
+        }
+      }
+
+      // Helper function to compare arrays
+      function arraysEqual(arr1, arr2) {
+        if (arr1.length !== arr2.length) return false;
+        for (let i = 0; i < arr1.length; i++) {
+          if (arr1[i] !== arr2[i]) return false;
+        }
+        return true;
+      }
+
+      // Show toast message
+      function showToast(message, type = "") {
+        toast.textContent = message;
+        toast.className = "toast";
+        if (type) toast.classList.add(type);
+        
+        setTimeout(() => {
+          toast.classList.add("show");
+        }, 100);
+        
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 3000);
+      }
+
+      // Set up event listeners
+      function setupEventListeners() {
+        resetBtn.addEventListener("click", () => {
+          resetStarAppearance();
+        });
+        
+        checkBtn.addEventListener("click", () => {
+          checkSolution();
+        });
+        
+        nextBtn.addEventListener("click", () => {
+          const nextLevel = gameState.currentLevel + 1;
+          if (nextLevel <= levels.length) {
+            loadLevel(nextLevel);
+          }
+        });
+      }
+
+      // Initialize the game when the page loads
+      window.addEventListener("DOMContentLoaded", initGame);
+    </script>
+  </body>
+</html>

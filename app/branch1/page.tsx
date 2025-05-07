@@ -146,7 +146,7 @@ export default function Home() {
           {/* Left Portal */}
           <Portal 
             color="blue" 
-            href="https://example.com/portal-a"
+            href="https://gradientaiml.tech/branchone"
             isHovered={hoverLeft}
             onHoverChange={setHoverLeft}
           />
@@ -154,7 +154,7 @@ export default function Home() {
           {/* Right Portal */}
           <Portal 
             color="orange" 
-            href="https://example.com/portal-b"
+            href="https://gradientaiml.tech/branchone"
             isHovered={hoverRight}
             onHoverChange={setHoverRight}
           />
