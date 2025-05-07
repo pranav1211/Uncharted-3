@@ -691,13 +691,13 @@ export default function JigsawPuzzle() {
         {/* Success/Failure messages */}
         {showSuccessMessage && (
           <div className="bg-green-500 text-white rounded-lg p-3 mt-4 animate-pulse">
-            Correct! That's the theme!
+            Correct! Thats the theme!
           </div>
         )}
         
         {showFailureMessage && (
           <div className="bg-red-500 text-white rounded-lg p-3 mt-4 animate-pulse">
-            Try again. That's not the theme we're looking for.
+            Try again. Thats not the theme we are looking for.
           </div>
         )}
         
