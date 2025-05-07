@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Head from "next/head";
+import { Orbitron } from 'next/font/google';
+
+// Configure the font
+const orbitronFont = Orbitron({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap',
+});
 
 export default function GridOfSecrets() {
   const [lives, setLives] = useState(5);
@@ -55,6 +62,10 @@ export default function GridOfSecrets() {
     "Brick", "Wood", "Leaf", "Pepsi", "Hunger Games", "Cloud", "Maze Runner", "Snow", "Fog", "Thanos"
   ];
 
+  const createGrid = () => {
+    setGridItems([...customLabels]);
+  };
+
   useEffect(() => {
     createGrid();
     
@@ -83,11 +94,7 @@ export default function GridOfSecrets() {
       document.removeEventListener('keydown', handleKeyDown);
       clearInterval(shuffleInterval);
     };
-  }, []);
-
-  const createGrid = () => {
-    setGridItems([...customLabels]);
-  };
+  }, []);  // No need to add createGrid as dependency, it doesn't depend on any state or props
 
   const shuffleGrid = () => {
     setGridItems(prevItems => [...prevItems].sort(() => Math.random() - 0.5));
@@ -108,11 +115,7 @@ export default function GridOfSecrets() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-cyan-400 flex flex-col items-center p-6 font-[Orbitron]">
-      <Head>
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
-      </Head>
-      
+    <div className={`min-h-screen bg-black text-cyan-400 flex flex-col items-center p-6 ${orbitronFont.className}`}>
       <h1 className="text-4xl font-bold mb-4 text-cyan-400 animate-pulse">
         GRID OF SECRETS
       </h1>

@@ -1,6 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Cinzel } from 'next/font/google';
+
+// Configure the font
+const cinzelFont = Cinzel({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+});
 
 export default function Congratulations() {
   const [loaded, setLoaded] = useState(false);
@@ -8,16 +16,6 @@ export default function Congratulations() {
   useEffect(() => {
     // Set loaded state after component mounts
     setLoaded(true);
-    
-    // Apply Cinzel font to the page
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
-    
-    return () => {
-      document.head.removeChild(link);
-    };
   }, []);
 
   // Custom shimmer animation styles
@@ -28,7 +26,7 @@ export default function Congratulations() {
   };
   
   return (
-    <div className="relative min-h-screen overflow-hidden bg-black">
+    <div className={`relative min-h-screen overflow-hidden bg-black ${cinzelFont.className}`}>
       {/* VIDEO BACKGROUND */}
       <div className="fixed inset-0 z-0">
         <video 
@@ -66,7 +64,7 @@ export default function Congratulations() {
         
         {/* Message */}
         <p className="font-serif text-xl md:text-4xl font-medium mb-10 text-yellow-100 max-w-3xl mx-auto leading-relaxed text-center">
-          <span className="text-amber-300 font-bold">"You are the legend who turned mystery into mastery."</span>
+          <span className="text-amber-300 font-bold">&ldquo;You are the legend who turned mystery into mastery.&rdquo;</span>
         </p>
         
         <h2 className="font-serif text-3xl md:text-5xl font-bold mt-8 mb-6 text-white tracking-widest text-center">
