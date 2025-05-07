@@ -340,7 +340,8 @@
             <h1>⏳ Past, Phish & Future ⏳</h1>
             <p>You're a specialized agent for the Temporal Security Agency. Your mission is to identify digital threats across different time periods to prevent timeline corruption.</p>
             <p>In each era, you'll assess communications to determine if they're legitimate or dangerous phishing attempts.</p>
-            <p>Analyse every detail on screen with utmost focus to uncover the password and continue your journey.</p>
+            <p>If a site is a phising site, a popup will appear and you have to analyze the page and search for hidden leeter(s) use those letters as a passkey to proceed to the next level</p>
+            <p>You must get all the sites correct then only you will get the final answer, you can refresh the page to restart but it will start from the beginning</p>
             <p><strong>Good luck, Agent. The timeline depends on your vigilance!</strong></p>
             <button class="btn" id="start-game">BEGIN MISSION</button>
         </div>
@@ -536,8 +537,7 @@
             <!-- Password Section Level 1 -->
             <div class="password-section" id="password-section-level1">
                 <h3>Time Portal Password</h3>
-                <p>Enter the password to proceed to the next time period:</p>
-                <p>You can remember me, but I cant return</p>
+                <p>Enter the password to proceed to the next time period:</p>                
                 <div class="collected-letters" id="collected-letters-level1">_ _</div>
                 <div style="margin-top: 15px;">
                     <input type="text" class="password-input" id="password-input-level1" maxlength="4">
@@ -707,7 +707,7 @@
     <div style="position: relative; text-align: center; margin-top: 20px;">
         <p>Find the exact brightness level that reveals the hidden message</p>
         <input type="range" min="0" max="100" value="50" id="brightness-slider" style="width: 80%; margin: 20px auto; display: block;">
-        <div id="brightness-value" style="text-align: center; font-size: 14px; color: #666;">Brightness: 50</div>
+        <div id="brightness-value" style="text-align: center; font-size: 14px; color: #666;">50</div>
         <div id="hidden-message-container" style="position: relative; width: 80%; height: 100px; margin: 0 auto; background-color: #f0f0f0; border-radius: 5px; overflow: hidden;">
             <!-- The hidden message with very low contrast -->
             <div id="hidden-message" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #f0f0f0; text-shadow: 1px 1px 1px rgba(0,0,0,0.1); user-select: none; font-weight: bold;">
@@ -1140,8 +1140,8 @@
             <h1>MISSION ACCOMPLISHED!</h1>
             <p>Congratulations, Time Agent! You've successfully identified and neutralized phishing threats across multiple time periods.</p>
             <div class="score-display" id="final-score">Your final score: 0/9</div>
-            <p>Your vigilance has protected the timeline from digital corruption.</p>
-            <button class="play-again" onclick="resetGame()">NEW MISSION</button>
+            <p>Your vigilance has protected the timeline from digital corruption.</p>            
+            <p id="thekey">The password to the next one is : scammer</p>
         </div>
     </div>
     
@@ -1158,9 +1158,9 @@
                 level3: {}
             },
             passwords: {
-                level1: "AGO",
-                level2: "PRS",
-                level3: "NXT"
+                level1: "OGA",
+                level2: "RPS",
+                level3: "XNT"
             }
         };
         
@@ -1327,7 +1327,8 @@
             const correctPassword = gameState.passwords['level' + level];
             const feedbackElement = document.getElementById('password-feedback-level' + level);
             
-            if (password === correctPassword) {
+            
+            if (password == correctPassword) {
                 feedbackElement.innerHTML = '<p>Correct! Time portal opening...</p>';
                 feedbackElement.className = 'feedback correct';
                 
@@ -1348,9 +1349,8 @@
         function completeGame() {
             document.querySelectorAll('.game-section').forEach(section => {
                 section.classList.remove('active');
-            });
+            });            
             
-            document.getElementById('final-score').textContent = 'Your final score: ' + gameState.score + '/' + gameState.maxScore;
             document.getElementById('game-complete').style.display = 'block';
         }
         
