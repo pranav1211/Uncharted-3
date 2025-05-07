@@ -154,7 +154,7 @@ export default function Home() {
           {/* Right Portal */}
           <Portal 
             color="orange" 
-            href="https://gradientaiml.tech/branchone"
+            href="https://gradientaiml.tech/branchtwo"
             isHovered={hoverRight}
             onHoverChange={setHoverRight}
           />
