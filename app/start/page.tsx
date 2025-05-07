@@ -12,17 +12,27 @@ const cinzel = Cinzel({
   weight: ['400', '600', '700', '800'],
 });
 
+// Define TypeScript interface for particle
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  speed: number;
+  opacity: number;
+}
+
 export default function UnchartedLandingPage() {
   const router = useRouter();
   const [inputValue, setInputValue] = useState('');
   const [isValid, setIsValid] = useState(false);
   const [showError, setShowError] = useState(false);
-  const [particles, setParticles] = useState([]);
+  const [particles, setParticles] = useState<Particle[]>([]);
 
   // Generate random particles for the animated background
   useEffect(() => {
     const particleCount = 50;
-    const newParticles = Array.from({ length: particleCount }, (_, i) => ({
+    const newParticles: Particle[] = Array.from({ length: particleCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -46,13 +56,13 @@ export default function UnchartedLandingPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
     setIsValid(value.toLowerCase() === 'start');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isValid) {      
       router.push('/');
@@ -65,7 +75,7 @@ export default function UnchartedLandingPage() {
   return (
     <div className="relative min-h-screen flex flex-col justify-center items-center bg-slate-900 overflow-hidden">
       {/* Animated background particles */}
-      {particles.map(particle => (
+      {particles.map((particle) => (
         <div 
           key={particle.id}
           className="absolute rounded-full bg-yellow-300"

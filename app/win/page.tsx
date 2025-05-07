@@ -8,11 +8,28 @@ export default function Congratulations() {
   useEffect(() => {
     // Set loaded state after component mounts
     setLoaded(true);
+    
+    // Apply Cinzel font to the page
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+    
+    return () => {
+      document.head.removeChild(link);
+    };
   }, []);
 
+  // Custom shimmer animation styles
+  const shimmerStyle = {
+    backgroundImage: 'linear-gradient(to right, #fef3c7 10%, #fcd34d 20%, #fef3c7 30%)',
+    backgroundSize: '200% auto',
+    animation: 'shimmer 3s linear infinite',
+  };
+  
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* VIDEO BACKGROUND - ensuring it's the first element */}
+    <div className="relative min-h-screen overflow-hidden bg-black">
+      {/* VIDEO BACKGROUND */}
       <div className="fixed inset-0 z-0">
         <video 
           autoPlay
@@ -33,14 +50,17 @@ export default function Congratulations() {
       <div className={`relative z-10 min-h-screen flex flex-col items-center justify-center px-4 transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
         {/* Decorative emblem */}
         <div className="mb-12 relative mx-auto w-40 h-40">
-          <div className="absolute inset-0 rounded-full border-4 border-amber-300 animate-spin" style={{ animationDuration: '30s' }}></div>
-          <div className="absolute inset-4 rounded-full border-2 border-amber-300 animate-spin" style={{ animationDuration: '20s', animationDirection: 'reverse' }}></div>
+          <div className="absolute inset-0 rounded-full border-4 border-amber-300" 
+               style={{ animation: 'spin 30s linear infinite' }}></div>
+          <div className="absolute inset-4 rounded-full border-2 border-amber-300" 
+               style={{ animation: 'spin 20s linear infinite reverse' }}></div>
           <div className="absolute inset-8 rounded-full border border-amber-300 animate-pulse"></div>
           <div className="absolute inset-12 bg-amber-300 bg-opacity-20 rounded-full"></div>
         </div>
         
         {/* Main title with shimmer effect */}
-        <h1 className="font-serif text-5xl md:text-7xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-amber-400 to-yellow-200 animate-shimmer tracking-wide text-center">
+        <h1 className="font-serif text-5xl md:text-7xl font-bold mb-10 text-transparent bg-clip-text tracking-wide text-center"
+            style={shimmerStyle}>
           CONGRATULATIONS
         </h1>
         
@@ -53,33 +73,25 @@ export default function Congratulations() {
           You have won
         </h2>
         
-        <h3 className="font-serif text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-300 animate-pulse mb-16 tracking-wider text-center">
+        <h3 className="font-serif text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text animate-pulse mb-16 tracking-wider text-center"
+            style={{
+              backgroundImage: 'linear-gradient(to right, #fcd34d, #fef3c7, #fcd34d)',
+              backgroundSize: '200% auto',
+            }}>
           Uncharted Lost Voyage
         </h3>
       </div>
       
-      {/* Custom styles */}
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap');
-        
-        body {
-          margin: 0;
-          padding: 0;
-          overflow-x: hidden;
-        }
-        
-        .font-serif {
-          font-family: 'Cinzel', serif;
-        }
-        
+      {/* Custom keyframes for animations */}
+      <style jsx>{`
         @keyframes shimmer {
           0% { background-position: -200% center; }
           100% { background-position: 200% center; }
         }
         
-        .animate-shimmer {
-          background-size: 200% auto;
-          animation: shimmer 3s linear infinite;
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
       `}</style>
     </div>
