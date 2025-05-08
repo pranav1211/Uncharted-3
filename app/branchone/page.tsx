@@ -74,7 +74,7 @@ export default function HackerTreasureHunt() {
             #T%h^i!s&1i#s*a2L(o)n-g3C!i^p#h(e)r4w%a^t#c@h5o!u^t6f#o*r7c$l*u#e^s
             </div>
             <p className="text-xl text-[#99ccff] mb-6">
-            Instructions: Remove all non-alphanumeric characters and read every 3rd letter. 
+            Instructions: Remove all non-alphabetical characters. 
             Then reorder the pieces to form a meaningful sentence.
             </p>
             <input
@@ -113,7 +113,7 @@ export default function HackerTreasureHunt() {
               Movement Pattern: Start at S (Row 2, Col 2)
             </p>
             <p className="text-xl text-[#99ccff] mb-6">
-              Follow: Right → Down → Left → Up → Up → Left
+              Follow: Right → Down → Left → Up → Up
             </p>
             <p className="text-xl text-[#99ccff] mb-6">
             Collect the letters as you go through the grid and rearrange the collected letters to find the hidden passphrase.
@@ -146,7 +146,7 @@ export default function HackerTreasureHunt() {
             </p>
             <div className="text-3xl font-bold my-6 text-white drop-shadow-[0_0_8px_#00ffff]">
               THE GATE HIDES THE SIGN<br />
-              NGIS EHT SEDIHP LATROP EHT
+              NGIS EHT SEDIH LATROP EHT
             </div>
             <input
               type="text"
@@ -179,12 +179,6 @@ export default function HackerTreasureHunt() {
             <p className="text-xl mb-8">
             Here is the key to the final puzzle : portal
             </p>
-            <button
-              onClick={resetGame}
-              className="bg-[#cc00ff] px-8 py-3 rounded font-bold text-white shadow-[0_0_8px_#ff00ff] hover:bg-[#dd00ff] transition-colors"
-            >
-              Play Again
-            </button>
           </div>
         )}
 

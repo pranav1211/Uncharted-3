@@ -45,7 +45,7 @@ export default function Home() {
       {showClue && (
         <div className="secret-box mt-4 text-green-600 font-semibold">
           The hands of time do more than tell — they point to secrets in plain sight. Numbers you see may not be what they seem.
-          Look at the clock. Think in decimals. Now, what if time spoke in base 64?
+          Look at the clock. Think in encryption. Now, what if time spoke in base 32?
         </div>
       )}
 
@@ -53,7 +53,7 @@ export default function Home() {
       <p className="hint">The first key to eternity is the one that begins time.</p>
 
       <div className="main">
-        <Door href="/selene/dGhlcmV2ZXJzZWNsb2Nr" no={1} />
+        <Door href="/selene/GEYTMIBRGA2CAMJQGEQDCMJUEAYTAMJAGEYTQIBRGAYSAMJRGQQDCMJVEAYTAMJAHE4SAMJQHAQDCMJREA4TSIBRGA3Q====" no={1} />
         <Door href="/selene/B" no={2} />
         <Door href="/selene/C" no={3} />
       </div>

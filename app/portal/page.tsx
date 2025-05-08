@@ -24,47 +24,43 @@ export default function FinalChallenge() {
       <p className="my-2 leading-relaxed max-w-2xl">
         You are given a DNA sequence. Decode it into its complementary sequence.<br />
         Then you convert it into morse code using...<br />
-        <Image 
-          src="/atcg.png" 
-          alt="Reference Image" 
-          width={300} 
-          height={200} 
-          className="max-w-xs my-5 border-2 border-[#00fff7] rounded-lg shadow-[0_0_10px_#00fff7]"
-        />
+        <div className="flex justify-center">
+          <Image 
+            src="/atcg.png" 
+            alt="Reference Image" 
+            width={300} 
+            height={200} 
+            className="max-w-xs my-5 border-2 border-[#00fff7] rounded-lg shadow-[0_0_10px_#00fff7]"
+          />
+        </div>
       </p>
       <p className="my-2">Now decode this morse code to get a set of numbers</p>
       <br />
       <h2 className="text-[#00fff7] text-shadow-glow mb-2">Sequence to decode :</h2>
       <ol className="text-left max-w-lg bg-[#1a1a1a] p-5 rounded-lg shadow-[0_0_10px_rgba(0,255,255,0.2)]">
-        <li className="mb-2">AAT GAGT GCC</li>
-        <li className="mb-2">GTCT ATC ATTT</li>
-        <li className="mb-2">ACG CTA TCA AGC</li>
-        <li className="mb-2">GCC CCT GGTTT AAT ACT</li>
-        <li className="mb-2">CCCCC CCTTT CTTTT</li>
-        <li className="mb-2">ACA GTA TACC CATT</li>
+        <li className="mb-2">File 1 : AAT GAGT GCC</li>
+        <li className="mb-2">File 2 : GTCT ATC ATTT</li>
+        <li className="mb-2">File 3 : AGC CTA TCA space AGC</li>
+        <li className="mb-2">File 4 : GCC CCT GGTTT AAT ACT</li>
+        <li className="mb-2">File 5 : GGGA GGTTT GCTT</li>
+        <li className="mb-2">File 6 : AGA TCGG TAGG GAC</li>
       </ol>
 
       <h2 className="text-[#00fff7] text-shadow-glow mb-2 mt-4">Morse code reference</h2>
-      <Image 
-        src="/morse.png" 
-        alt="Problem Image" 
-        width={300} 
-        height={200} 
-        className="max-w-xs my-5 border-2 border-[#00fff7] rounded-lg shadow-[0_0_10px_#00fff7]"
-      />
+      <div className="flex justify-center">
+        <Image 
+          src="/morse.png" 
+          alt="Problem Image" 
+          width={300} 
+          height={200} 
+          className="max-w-xs my-5 border-2 border-[#00fff7] rounded-lg shadow-[0_0_10px_#00fff7]"
+        />
+      </div>
       <br />
-
-      <p className="my-2">Solution is a set of 3 to 4 digit numbers</p>
-      <input 
-        type="text" 
-        placeholder="Set of numbers is..."
-        value={input1}
-        onChange={(e) => setInput1(e.target.value)}
-        className="p-3 my-2 w-4/5 max-w-md rounded border border-gray-600 bg-[#1e1e1e] text-[#00fff7] text-base text-center shadow-[inset_0_0_5px_#00fff7]"
-      />
 
       <p className="my-2">
         To decipher the next part go to <br />
+        <span className="block mt-2 mb-2">to know what do with these numbers, click the link below. there is another set of instructions which will tell you how to extract letters, combine those letters to form a word and submit it below to be the winner</span>
         GitHub repo:
         <Link href="https://github.com/varshavkumar98765/miniature-octo-lamp" target="_blank" className="text-[#ff00ff] font-bold hover:underline">
           {" https://github.com/varshavkumar98765/miniature-octo-lamp"}

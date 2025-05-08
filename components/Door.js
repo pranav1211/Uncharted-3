@@ -9,13 +9,13 @@ export default function Door({ href, no }) {
   const [unlocked, setUnlocked] = useState(no !== 1); // Door 3 is unlocked by default
 
   const correctWords = {
-    1: 'dGhlcmV2ZXJzZWNsb2Nr',
+    1: 'GEYTMIBRGA2CAMJQGEQDCMJUEAYTAMJAGEYTQIBRGAYSAMJRGQQDCMJVEAYTAMJAHE4SAMJQHAQDCMJREA4TSIBRGA3Q====',
   };
 
   const handleUnlock = () => {
-    if (input === "dGhlcmV2ZXJzZWNsb2Nr" ) {
+    if (input === "GEYTMIBRGA2CAMJQGEQDCMJUEAYTAMJAGEYTQIBRGAYSAMJRGQQDCMJVEAYTAMJAHE4SAMJQHAQDCMJREA4TSIBRGA3Q====" ) {
       setUnlocked(true);
-      redirect('/selene/dGhlcmV2ZXJzZWNsb2Nr')
+      redirect('/selene/GEYTMIBRGA2CAMJQGEQDCMJUEAYTAMJAGEYTQIBRGAYSAMJRGQQDCMJVEAYTAMJAHE4SAMJQHAQDCMJREA4TSIBRGA3Q====')
     }
     else if(input === "timeless"){
       setUnlocked(true);

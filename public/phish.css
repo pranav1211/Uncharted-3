@@ -1,0 +1,393 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    transition: all 0.5s;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1,
+h2,
+h3 {
+    color: #4fc3f7;
+    text-align: center;
+}
+
+.game-intro {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(79, 195, 247, 0.3);
+}
+
+.game-section {
+    display: none;
+    margin-bottom: 30px;
+    animation: fadeIn 0.5s;
+}
+
+.game-section.active {
+    display: block;
+}
+
+.level-intro {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.question-container {
+    background-color: rgba(30, 30, 30, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(79, 195, 247, 0.2);
+}
+
+.question-image {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid #555;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.phish-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin: 5px;
+}
+
+.btn-phish {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-legit {
+    background-color: #4caf50;
+    color: white;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.feedback {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.correct {
+    background-color: rgba(76, 175, 80, 0.3);
+    border: 1px solid #4caf50;
+}
+
+.incorrect {
+    background-color: rgba(244, 67, 54, 0.3);
+    border: 1px solid #f44336;
+}
+
+.collected-letters {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    letter-spacing: 5px;
+}
+
+.password-section {
+    text-align: center;
+    margin-top: 30px;
+    display: none;
+}
+
+.password-input {
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 5px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.level-complete {
+    text-align: center;
+    margin: 30px 0;
+    display: none;
+    animation: pulse 2s infinite;
+}
+
+.fake-site {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 100;
+    overflow: auto;
+    padding: 20px;
+}
+
+/* IMPORTANT: Updated close button styling for better desktop compatibility */
+.close-fake-site {
+    position: fixed;
+    /* Changed from absolute to fixed */
+    top: 20px;
+    /* Increased from 10px */
+    right: 20px;
+    /* Increased from 10px */
+    padding: 10px 15px;
+    /* Increased padding for better visibility */
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    /* Added font size */
+    font-weight: bold;
+    /* Made text bold */
+    z-index: 101;
+    /* Ensure it's above other elements */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    /* Added shadow for visibility */
+}
+
+/* Added hover effect for X button */
+.close-fake-site:hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+}
+
+.hidden-clue {
+    color: transparent;
+    user-select: none;
+}
+
+.brightness-sensitive {
+    position: relative;
+}
+
+.hidden-bright-text {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: rgba(255, 255, 255, 0.05);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.hover-reveal-area {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    margin: 0 auto;
+}
+
+.hover-text {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 60px;
+    background-color: #444;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.hover-reveal-area:hover .hover-text {
+    display: block;
+}
+
+/* Time period styling */
+.past {
+    background-color: #3e2723;
+    background-image: url('/api/placeholder/800/200');
+    background-blend-mode: overlay;
+    background-size: cover;
+}
+
+.present {
+    background-color: #263238;
+    background-image: url('/api/placeholder/800/200');
+    background-blend-mode: overlay;
+    background-size: cover;
+}
+
+.future {
+    background-color: #1a237e;
+    background-image: url('/api/placeholder/800/200');
+    background-blend-mode: overlay;
+    background-size: cover;
+}
+
+.game-complete {
+    display: none;
+    text-align: center;
+    margin-top: 50px;
+    animation: confetti 1s infinite;
+}
+
+.score-display {
+    font-size: 28px;
+    margin: 20px 0;
+}
+
+.play-again {
+    padding: 15px 30px;
+    background-color: #4fc3f7;
+    color: #121212;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.play-again:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(79, 195, 247, 0.5);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes confetti {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    }
+
+    50% {
+        text-shadow: 0 0 20px rgba(79, 195, 247, 0.8);
+    }
+
+    100% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    }
+}
+
+.time-portal {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #4fc3f7;
+    }
+
+    50% {
+        text-shadow: 0 0 20px #4fc3f7, 0 0 30px #4fc3f7;
+    }
+
+    100% {
+        text-shadow: 0 0 5px #4fc3f7;
+    }
+}
+
+.brightness-control {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.brightness-slider {
+    width: 300px;
+}
+
+/* Added media query for 1920x1080 desktop screens */
+@media screen and (min-width: 1600px) {
+    .container {
+        max-width: 1200px;
+        /* Increased container width for larger screens */
+    }
+
+    .question-image {
+        max-width: 900px;
+        /* Larger images for desktop */
+    }
+
+    /* Ensure the close button remains visible on larger screens */
+    .close-fake-site {
+        font-size: 18px;
+        padding: 12px 18px;
+    }
+}
+
+/* Add necessary styles for the movable box */
+.movable-box {
+    user-select: none;
+    transition: transform 0.1s;
+    background-color: #0aa;
+}
+
+/* Remove hover effect - we only want drag to reveal */
+
+
+/* Alternative draggable implementation using JS */
+.dragging {
+    opacity: 0.8;
+}
+
+/* Make sure the hidden content is visible */
+.hidden-content {
+    font-size: 16px;
+    text-shadow: 0 0 5px #0ff;
+}
+
+.hover-reveal-area:hover .hover-text {
+    color: white;
+}

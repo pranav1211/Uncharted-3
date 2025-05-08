@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Easy Infinite Scroll Enigma</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Courier New", monospace;
+            background: #111;
+            color: #eee;
+        }
+        #feed {
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+        .item {
+            background: #222;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            position: relative;
+            cursor: pointer;
+            white-space: pre-wrap;
+            text-align: center;
+        }
+        .item.special {
+            background: #222;
+            box-shadow: 0 0 5px rgba(100,100,100,0.5);
+        }
+        .hidden-letter {
+            color: #eee;
+            font-weight: bold;
+            font-size: 1.2em;
+            opacity: 0.1;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+        .corner-top-left {
+            top: 5px;
+            left: 5px;
+        }
+        .corner-top-right {
+            top: 5px;
+            right: 5px;
+        }
+        .corner-bottom-left {
+            bottom: 5px;
+            left: 5px;
+        }
+        .corner-bottom-right {
+            bottom: 5px;
+            right: 5px;
+        }
+        .item.revealed .hidden-letter {
+            opacity: 1;
+            color: yellow;
+        }
+        #solutionBox {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            padding: 10px;
+            border-radius: 8px;
+            z-index: 1000;
+        }
+        #solutionBox input {
+            padding: 5px;
+            border: none;
+            outline: none;
+            width: 200px;
+        }
+        #solutionBox button {
+            padding: 5px 10px;
+            margin-left: 5px;
+            background: yellow;
+            border: none;
+            cursor: pointer;
+        }
+        #winScreen {
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background: rgba(0,0,0,0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: yellow;
+            font-size: 2em;
+            text-align: center;
+            flex-direction: column;
+            display: none;
+        }
+        #clueBox {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 1000;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="clueBox">
+        <p>🔍 Find the hidden letters in corners as you scroll to reveal the 9-letter password</p>
+        <p>Click on boxes to reveal letters. Keep scrolling to find all letters.</p>
+    </div>
+    <div id="feed"></div>
+    <div id="solutionBox">
+        <input type="text" id="solutionInput" placeholder="Enter 9-letter password">
+        <button onclick="checkSolution()">Submit</button>
+    </div>
+    <div id="winScreen">
+        <p>🎉 You solved the puzzle!</p>
+        <p>The password is <span style="font-size: 1.5em; font-weight: bold;">superhero</span></p>
+        <p>Congratulations!</p>
+    </div>
+
+    <script>
+        const feed = document.getElementById('feed');
+        let itemCount = 0;
+        const secretWord = "SUPERHERO";  // Changed to a longer 9-letter word
+        // Create large gaps between letter positions
+        const letterPositions = [5, 15, 30, 50, 75, 100, 130, 165, 205]; // Big gaps between letters
+        
+        const sampleTexts = [
+            `"Some posts contain hidden secrets..."`,
+            `A mysterious pattern appears to those who seek.`,
+            `The path forward requires attentiveness.`,
+            `What appears ordinary may hold extraordinary meaning.`,
+            `Scrolling reveals more than meets the eye.`,
+            `Certain content holds more significance than others.`,
+            `Patterns emerge for those who observe carefully.`,
+            `The answer may be hiding where you least expect it.`,
+            `Not all posts are created equal.`,
+            `Interaction can unveil hidden truths.`,
+            `There's more to this feed than mere text.`,
+            `Some posts contain pieces of a larger puzzle.`,
+            `Seeking knowledge requires exploration.`,
+            `Special content may appear different in subtle ways.`,
+            `The journey is long, clues are far between.`,
+            `Keep scrolling to find what you seek.`,
+            `The path is long, but rewards the patient.`,
+            `Far apart lie the pieces of the puzzle.`
+        ];
+
+        function addItems(num) {
+            for (let i = 0; i < num; i++) {
+                itemCount++;
+                const div = document.createElement('div');
+                div.classList.add('item');
+
+                // Random content
+                const randomContent = sampleTexts[Math.floor(Math.random() * sampleTexts.length)];
+                div.textContent = randomContent;
+
+                // Add special boxes with letters at specific positions
+                if (letterPositions.includes(itemCount)) {
+                    div.classList.add('special');
+                    
+                    const letterIndex = letterPositions.indexOf(itemCount);
+                    const letter = secretWord[letterIndex];
+                    
+                    div.innerHTML = randomContent;
+                    
+                    // Add hidden letter element in a random corner
+                    const span = document.createElement('span');
+                    span.classList.add('hidden-letter');
+                    
+                    // Choose a random corner
+                    const corners = ['corner-top-left', 'corner-top-right', 'corner-bottom-left', 'corner-bottom-right'];
+                    const randomCorner = corners[Math.floor(Math.random() * corners.length)];
+                    span.classList.add(randomCorner);
+                    
+                    span.textContent = letter;
+                    div.appendChild(span);
+                    
+                    div.addEventListener('click', () => {
+                        if (!div.classList.contains('revealed')) {
+                            div.classList.add('revealed');
+                        }
+                    });
+                }
+
+                feed.appendChild(div);
+            }
+        }
+
+        function checkSolution() {
+            const input = document.getElementById('solutionInput').value.trim().toUpperCase();
+            if (input === secretWord) {
+                showWinScreen();
+            } else {
+                alert("❌ Try again. The password has 9 letters.");
+            }
+        }
+
+        function showWinScreen() {
+            document.getElementById('winScreen').style.display = 'flex';
+        }
+
+        // Initial load
+        addItems(20);
+
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
+                addItems(10);
+            }
+        });
+    </script>
+</body>
+</html>
