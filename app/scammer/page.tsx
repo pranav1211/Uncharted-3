@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 export default function RedirectPage() {
   useEffect(() => {
     // Redirect to stars.html (file in public folder)
-    window.location.href = 'https://beyondmebtw.com';
+    window.location.href = 'https://cosmo-taupe.vercel.app/';
   }, []);
 
   // This content will be shown briefly before the redirect happens

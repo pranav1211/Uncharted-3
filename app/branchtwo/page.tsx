@@ -45,16 +45,6 @@ const caesarSentences: CaesarSentence[] = [
       { encrypted: 'Hzgf', answer: 'Cuba' },
     ],
     correctSentence: 'Pirates raided ships near Cuba'
-  },
-  {
-    encrypted: [
-      { encrypted: 'Ymnjajx', answer: 'Thieves' },
-      { encrypted: 'jxhfuji', answer: 'escaped' },
-      { encrypted: 'ymwtzlm', answer: 'through' },
-      { encrypted: 'xjhwjy', answer: 'secret' },
-      { encrypted: 'yzssjq', answer: 'tunnel' },
-    ],
-    correctSentence: 'Thieves escaped through secret tunnel'
   }
 ];
 
@@ -187,7 +177,7 @@ export default function VaultBreaker() {
         <p className="vault-hint">
           {level === 1 
             ? "Level 1: The vault hums: Step back 5 times to unlock the door" 
-            : "Level 2: Mirror, mirror on the wall... find what's reflected in the opposite"}
+            : "Level 2: Mirror, mirror on the wall... find what's reflected in the opposite (Cipher)"}
         </p>
         
         {level === 1 ? (

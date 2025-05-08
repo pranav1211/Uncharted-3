@@ -38,12 +38,12 @@ export default function FinalChallenge() {
       <br />
       <h2 className="text-[#00fff7] text-shadow-glow mb-2">Sequence to decode :</h2>
       <ol className="text-left max-w-lg bg-[#1a1a1a] p-5 rounded-lg shadow-[0_0_10px_rgba(0,255,255,0.2)]">
-        <li className="mb-2">File 1 : AAT GAGT GCC</li>
-        <li className="mb-2">File 2 : GTCT ATC ATTT</li>
-        <li className="mb-2">File 3 : AGC CTA TCA space AGC</li>
-        <li className="mb-2">File 4 : GCC CCT GGTTT AAT ACT</li>
-        <li className="mb-2">File 5 : GGGA GGTTT GCTT</li>
-        <li className="mb-2">File 6 : AGA TCGG TAGG GAC</li>
+        <li className="mb-2">1_AvengersEndGame : AAT GAGT GCC</li>
+        <li className="mb-2">2_LoremIpsum : GTCT ATC ATTT</li>
+        <li className="mb-2">3_AttentionIsAllYouNeed : AGC CTA TCA space AGC</li>
+        <li className="mb-2">4_Orion : GCC CCT GGTTT AAT ACT</li>
+        <li className="mb-2">5_TheForceAwakens : GGGA GGTTT GCTT</li>
+        <li className="mb-2">6_MerchantOfVenice: AGA TCGG TAGG GAC</li>
       </ol>
 
       <h2 className="text-[#00fff7] text-shadow-glow mb-2 mt-4">Morse code reference</h2>

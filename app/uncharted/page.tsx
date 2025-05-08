@@ -65,7 +65,7 @@ export default function UnchartedLandingPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isValid) {      
-      router.push('/jigsaw');
+      router.push('/scroll');
     } else {
       setShowError(true);
       setTimeout(() => setShowError(false), 3000);
