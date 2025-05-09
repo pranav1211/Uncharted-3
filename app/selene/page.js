@@ -50,8 +50,9 @@ export default function Home() {
       )}
 
       <h1>The stars do not begin, they simply are.</h1>
-      <p className="hint">The first key to eternity is the one that begins time.</p>
+      <p className="hint">The first key to eternity is the one that begins time. Some doors are not what they seem, some will lead you to eternal glory while others to eternal despair</p>
       <p className="hint">Enter the passwords in the white boxes and press enter, if its correct you will go forward</p>
+      <p className="hint">To enter a door, click on the "door" name at the bottom of the door</p>
 
       <div className="main">
         <Door href="/selene/GEYTMIBRGA2CAMJQGEQDCMJUEAYTAMJAGEYTQIBRGAYSAMJRGQQDCMJVEAYTAMJAHE4SAMJQHAQDCMJREA4TSIBRGA3Q====" no={1} />

@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-
 const initialBoard = [
   [5, 3, '', '', 7, '', '', '', ''],
   [6, '', '', 1, 9, 5, '', '', ''],
@@ -59,8 +58,8 @@ export default function SudokuPage() {
 
   const handleCheck = () => {
     if (isSolved()) {
-      alert('🎉 Sudoku Solved! You were Distracted');
-      router.push('/'); // redirect to original page
+      alert('🎉 Sudoku Solved! But You were Distracted, This is not it');
+      router.push('https://gradientaiml.tech/selene'); // redirect to original page
     } else {
       alert('❌ Not solved correctly yet!');
     }
@@ -84,7 +83,62 @@ export default function SudokuPage() {
           ))
         )}
       </div>
-      <button onClick={handleCheck} className="check-button">Check Solution</button>
+      <button onClick={handleCheck} className="check-button">
+        Check Solution
+      </button>
+      <style jsx>{`
+        .sudoku-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+          background-color: #f7f7f7;
+          min-height: 100vh;
+          font-family: Arial, sans-serif;
+        }
+
+        h1 {
+          margin-bottom: 20px;
+          color: #333;
+        }
+
+        .sudoku-grid {
+          display: grid;
+          grid-template-columns: repeat(9, 40px);
+          gap: 2px;
+        }
+
+        .sudoku-cell {
+          width: 40px;
+          height: 40px;
+          text-align: center;
+          font-size: 16px;
+          border: 1px solid #ddd;
+          background-color: #fff;
+          outline: none;
+          color: #333;
+        }
+
+        .sudoku-cell:disabled {
+          background-color: #eee;
+          color: #999;
+        }
+
+        .check-button {
+          margin-top: 20px;
+          padding: 10px 20px;
+          font-size: 16px;
+          color: #fff;
+          background-color: #007bff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        .check-button:hover {
+          background-color: #0056b3;
+        }
+      `}</style>
     </div>
   );
 }
