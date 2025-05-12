@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Uncharted: Lost Voyage by Gradient  
+### Utsav Ananta 2025  
 
-## Getting Started
+Welcome to the official repository for **Uncharted: Lost Voyage**, a digital treasure hunt created by Gradient on the occasion of **Utsav Ananta 2025**.  
 
-First, run the development server:
+## Leadership and Coordination  
+The entire integration, testing, and management of this treasure hunt were expertly handled by **Pranav Veeraghanta**, **Event Coordinator** for _Uncharted Lost Voyage_ and _Tech Head_ at **Gradient**. His leadership ensured a seamless experience for all participants, bringing the team's efforts together into a cohesive and impactful event.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## About the Event  
+**Uncharted: Lost Voyage** is a multi-stage treasure hunt designed to test participants' problem-solving skills, creativity, and teamwork. Each stage features unique puzzles that must be solved to progress further. The event was developed by the Gradient team with a mix 
+of technical expertise and imaginative puzzle design.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Puzzle Creators  
+The treasure hunt was brought to life through the collective efforts of our talented event volunteers/puzzle creators:  
+- **Fasi Owaiz Ahmed**: Endless Scroll, Grid of Secrets  
+- **Varsha V Kumar**: Final puzzle, DNA and Book Cipher  
+- **Shriyans Nayak**: Planet Finder Page  
+- **Suniksha Priya** and **Sahana BK**: Branch One Cipher Page  
+- **Ahas Kaushik**: Constellation Connectors  
+- **Anirudh Kuppam**: Phishing Page  
+- **Navit Mathur**: Door Page  
+- **Shashank Bhat**: Branch Two Cipher Page  
+- **Channabasavanna**  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to Run  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Running Online  
+To access the treasure hunt online, visit [uncharted3.gradientaiml.tech](http://uncharted3.gradientaiml.tech).  
 
-## Learn More
+### Running Locally  
+To run the project locally:  
+- Clone the repository using `git clone https://github.com/yourusername/uncharted-lost-voyage.git` and navigate to the project directory using `cd uncharted-lost-voyage`.  
+- Install dependencies with `npm install`, `yarn install`, or `bun install` depending on your package manager.  
+- Start the development server with `npm run dev`, `yarn dev`, or `bun dev`.  
 
-To learn more about Next.js, take a look at the following resources:
+Once the server is running, open [http://localhost:3000](http://localhost:3000) in your browser to access the treasure hunt.  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Acknowledgments  
+We extend our gratitude to all the participants of **Uncharted: Lost Voyage** and the Utsav Ananta 2025 organizers for their support. This event was a collaborative effort powered by Gradient Club and we are proud to share it with you.  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For any queries or feedback, visit us at [gradientaiml.tech](https://gradientaiml.tech) or email **Pranav Veeraghanta** at [pranavv.ai22@bmsce.ac.in](mailto:pranavv.ai22@bmsce.ac.in).
