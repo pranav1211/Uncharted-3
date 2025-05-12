@@ -150,7 +150,7 @@ export default function UnchartedLostVoyage() {
               Tag Gradient Club on LinkedIn
             </a>
             <a 
-              href="https://twitter.com/Pranvisda1" 
+              href="https://twitter.com/Pranavisda1" 
               target="_blank" 
               rel="noopener noreferrer"
               className="py-2 px-4 bg-gradient-to-r from-blue-400 to-blue-600 rounded-md transition-all duration-300 text-white hover:shadow-lg hover:shadow-blue-500/20 text-base md:text-lg"
