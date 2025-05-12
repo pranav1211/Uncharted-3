@@ -62,8 +62,8 @@ export default function FinalChallenge() {
         To decipher the next part go to <br />
         <span className="block mt-2 mb-2">to know what do with these numbers, click the link below. there is another set of instructions which will tell you how to extract letters, combine those letters to form a word and submit it below to be the winner</span>
         GitHub repo:
-        <Link href="https://github.com/varshavkumar98765/miniature-octo-lamp" target="_blank" className="text-[#ff00ff] font-bold hover:underline">
-          {" https://github.com/varshavkumar98765/miniature-octo-lamp"}
+        <Link href="https://github.com/pranav1211/Final-Round-UNC3" target="_blank" className="text-[#ff00ff] font-bold hover:underline">
+          {"https://github.com/pranav1211/Final-Round-UNC3"}
         </Link>
       </p>
 
