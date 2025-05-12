@@ -1,0 +1,110 @@
+/* Additional animations for Chronoscape Lite */
+
+@keyframes pulseGlow {
+            0% {
+              box-shadow: 0 0 5px rgba(100, 150, 255, 0.3);
+            }
+            50% {
+              box-shadow: 0 0 15px rgba(100, 150, 255, 0.6);
+            }
+            100% {
+              box-shadow: 0 0 5px rgba(100, 150, 255, 0.3);
+            }
+          }
+          
+          @keyframes fadeInFromBlack {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+          
+          @keyframes starTwinkle {
+            0% {
+              opacity: 0.4;
+            }
+            50% {
+              opacity: 1;
+            }
+            100% {
+              opacity: 0.4;
+            }
+          }
+          
+          @keyframes lensSwitch {
+            0% {
+              transform: scale(1) translate(-50%, -50%);
+              opacity: 1;
+            }
+            50% {
+              transform: scale(1.2) translate(-42%, -42%);
+              opacity: 0.7;
+            }
+            100% {
+              transform: scale(1) translate(-50%, -50%);
+              opacity: 1;
+            }
+          }
+          
+          @keyframes regionComplete {
+            0% {
+              box-shadow: 0 0 10px rgba(100, 150, 255, 0.5);
+              border-color: rgba(100, 150, 255, 0.5);
+            }
+            50% {
+              box-shadow: 0 0 25px rgba(100, 150, 255, 0.9);
+              border-color: rgba(140, 200, 255, 0.9);
+            }
+            100% {
+              box-shadow: 0 0 10px rgba(100, 150, 255, 0.5);
+              border-color: rgba(100, 150, 255, 0.5);
+            }
+          }
+          
+          @keyframes textReveal {
+            0% {
+              opacity: 0;
+              filter: blur(5px);
+            }
+            100% {
+              opacity: 1;
+              filter: blur(0);
+            }
+          }
+          
+          @keyframes errorShake {
+            0%, 100% {
+              transform: translateX(0);
+            }
+            25% {
+              transform: translateX(-5px);
+            }
+            75% {
+              transform: translateX(5px);
+            }
+          }
+          
+          /* Apply these animations to enhance existing elements */
+          .litRegion {
+            animation: regionComplete 3s infinite;
+          }
+          
+          .inkRevealed {
+            animation: textReveal 1s forwards;
+          }
+          
+          /* Special animations for the lens */
+          .defaultLens {
+            animation: pulseGlow 4s infinite;
+          }
+          
+          .uvLens {
+            animation: pulseGlow 3s infinite;
+          }
+          
+          /* Animation for lens switching */
+          .lensSwitch {
+            animation: lensSwitch 0.5s ease-in-out;
+          }
