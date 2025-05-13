@@ -102,7 +102,7 @@ export default function UnchartedLostVoyage() {
             </h2>
             <div className="text-base text-blue-300">
               <p className="mb-3">
-                <span className="text-purple-300 font-semibold">Event Coordinators:</span> Pranav Veeraghanta and Siddarth
+                <span className="text-purple-300 font-semibold">Event Coordinators:</span> Pranav Veeraghanta and Siddharth
               </p>
               <p className="mb-3">
                 <span className="text-purple-300 font-semibold">Integration, Management, and Testing:</span> Pranav Veeraghanta
