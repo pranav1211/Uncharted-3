@@ -113,12 +113,12 @@ export default function UnchartedLostVoyage() {
                 <li>Fasi Owaiz Ahmed</li>
                 <li>Varsha V Kumar</li>
                 <li>Shriyans Nayak</li>
-                <li>Suniksha Priya</li>
-                <li>Sahana BK</li>
+                <li>Suniksha Priya</li>                
                 <li>Ahas Kaushik</li>
                 <li>Anirudh Kuppam</li>
                 <li>Navit Mathur</li>
                 <li>Shashank Bhat</li>
+                <li>Sahana BK</li>
                 <li>Channabasavanna</li>
               </ul>
             </div>

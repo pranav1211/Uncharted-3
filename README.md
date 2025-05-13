@@ -14,11 +14,12 @@ The treasure hunt was brought to life through the collective efforts of our tale
 - **Fasi Owaiz Ahmed**: Endless Scroll, Grid of Secrets  
 - **Varsha V Kumar**: Final puzzle, DNA and Book Cipher  
 - **Shriyans Nayak**: Planet Finder Page  
-- **Suniksha Priya** and **Sahana BK**: Branch One Cipher Page  
+- **Suniksha Priya**: Branch One Cipher Page  
 - **Ahas Kaushik**: Constellation Connectors  
 - **Anirudh Kuppam**: Phishing Page  
 - **Navit Mathur**: Door Page  
 - **Shashank Bhat**: Branch Two Cipher Page  
+- **Sahana BK**: Branch One Cipher Page  
 - **Channabasavanna**  
 
 ## How to Run  
