@@ -113,7 +113,7 @@ export default function UnchartedLostVoyage() {
                 <li>Fasi Owaiz Ahmed</li>
                 <li>Varsha V Kumar</li>
                 <li>Shriyans Nayak</li>
-                <li>Suniksha Priya</li>                
+                <li>Suniksha Priya</li>
                 <li>Ahas Kaushik</li>
                 <li>Anirudh Kuppam</li>
                 <li>Navit Mathur</li>
@@ -198,12 +198,13 @@ export default function UnchartedLostVoyage() {
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500" />
 
             <h3 className="text-xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-              Game Rules
+              Game Rules and How to Play
             </h3>
 
             <ul className="list-none text-left space-y-3 mb-6">
               {["You can use Google Search, but avoid AI tools for a more fun experience.",
-                "Use decoding and encoding tools as needed."].map((rule, index) => (
+                "Use decoding and encoding tools as needed.",
+                "Each puzzle gives a password, take that password and affix it to the end of the URL, do not change gradientaiml.tech, that is constant"].map((rule, index) => (
                   <li key={index} className="flex items-start text-blue-100">
                     <span className="inline-block mr-2 mt-1 text-purple-400">◆</span>
                     <span>{rule}</span>
