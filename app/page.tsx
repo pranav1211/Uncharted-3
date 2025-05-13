@@ -21,7 +21,7 @@ export default function UnchartedLostVoyage() {
   return (
     <div
       className="relative w-full min-h-screen bg-cover bg-center bg-fixed flex flex-col justify-between items-center text-white font-sans"
-      style={{ 
+      style={{
         backgroundImage: "url('/ULVFS.png')",
         backgroundRepeat: "repeat-y"
       }}
@@ -102,8 +102,12 @@ export default function UnchartedLostVoyage() {
             </h2>
             <div className="text-base text-blue-300">
               <p className="mb-3">
-                <span className="text-purple-300 font-semibold">Event Coordinator:</span> Pranav Veeraghanta
-              </p>              
+                <span className="text-purple-300 font-semibold">Event Coordinators:</span> Pranav Veeraghanta and Siddarth
+              </p>
+              <p className="mb-3">
+                <span className="text-purple-300 font-semibold">Integration, Management, and Testing:</span> Pranav Veeraghanta
+              </p>
+
               <p className="text-purple-300 font-semibold mb-2">Volunteers/Puzzle Creators:</p>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 mt-1 text-blue-100">
                 <li>Fasi Owaiz Ahmed</li>
@@ -131,30 +135,30 @@ export default function UnchartedLostVoyage() {
             Once you've solved it, tag us on social media and share your experience:
           </h2>
           <div className="flex flex-wrap justify-center gap-4 mt-2">
-            <a 
-              href="https://instagram.com/gradient.aiml" 
-              target="_blank" 
+            <a
+              href="https://instagram.com/gradient.aiml"
+              target="_blank"
               rel="noopener noreferrer"
               className="py-2 px-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-md transition-all duration-300 text-white hover:shadow-lg hover:shadow-purple-500/20 text-base md:text-lg"
-              style={{textShadow: '0 1px 2px rgba(0,0,0,0.5)'}}
+              style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
             >
               Tag @gradient.aiml on Instagram
             </a>
-            <a 
-              href="https://www.linkedin.com/company/gradient-club" 
-              target="_blank" 
+            <a
+              href="https://www.linkedin.com/company/gradient-club"
+              target="_blank"
               rel="noopener noreferrer"
               className="py-2 px-4 bg-gradient-to-r from-blue-600 to-blue-800 rounded-md transition-all duration-300 text-white hover:shadow-lg hover:shadow-blue-500/20 text-base md:text-lg"
-              style={{textShadow: '0 1px 2px rgba(0,0,0,0.5)'}}
+              style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
             >
               Tag Gradient Club on LinkedIn
             </a>
-            <a 
-              href="https://twitter.com/Pranavisda1" 
-              target="_blank" 
+            <a
+              href="https://twitter.com/Pranavisda1"
+              target="_blank"
               rel="noopener noreferrer"
               className="py-2 px-4 bg-gradient-to-r from-blue-400 to-blue-600 rounded-md transition-all duration-300 text-white hover:shadow-lg hover:shadow-blue-500/20 text-base md:text-lg"
-              style={{textShadow: '0 1px 2px rgba(0,0,0,0.5)'}}
+              style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
             >
               Tag @Pranvisda1 on Twitter
             </a>
@@ -192,21 +196,21 @@ export default function UnchartedLostVoyage() {
             }}
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500" />
-            
+
             <h3 className="text-xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
               Game Rules
             </h3>
-            
+
             <ul className="list-none text-left space-y-3 mb-6">
-              {["You can use Google Search, but avoid AI tools for a more fun experience.", 
+              {["You can use Google Search, but avoid AI tools for a more fun experience.",
                 "Use decoding and encoding tools as needed."].map((rule, index) => (
-                <li key={index} className="flex items-start text-blue-100">
-                  <span className="inline-block mr-2 mt-1 text-purple-400">◆</span>
-                  <span>{rule}</span>
-                </li>
-              ))}
+                  <li key={index} className="flex items-start text-blue-100">
+                    <span className="inline-block mr-2 mt-1 text-purple-400">◆</span>
+                    <span>{rule}</span>
+                  </li>
+                ))}
             </ul>
-            
+
             <div className="flex flex-wrap justify-center gap-4 mt-6">
               <button
                 className="px-5 py-2 cursor-pointer rounded-md text-white font-bold transition-all duration-300"
@@ -229,7 +233,7 @@ export default function UnchartedLostVoyage() {
               >
                 Start Game
               </button>
-              
+
               <button
                 className="px-5 py-2 rounded-md text-white font-bold transition-all duration-300 cursor-pointer"
                 style={{
