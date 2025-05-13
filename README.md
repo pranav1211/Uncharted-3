@@ -1,13 +1,12 @@
-# Uncharted: Lost Voyage by Gradient  
-### Utsav Ananta 2025  
+# Uncharted 3.0: Lost Voyage
 
-Welcome to the official repository for **Uncharted: Lost Voyage**, a digital treasure hunt created by Gradient on the occasion of **Utsav Ananta 2025**.  
+Welcome to the official repository for **Uncharted 3.0: Lost Voyage**, a digital treasure hunt created by Gradient on the occasion of **Utsav Ananta 2025**.  
 
 ## Leadership and Coordination  
-The entire integration, testing, and management of this treasure hunt were expertly handled by **Pranav Veeraghanta**, **Event Coordinator** for _Uncharted Lost Voyage_ and _Tech Head_ at **Gradient**. His leadership ensured a seamless experience for all participants, bringing the team's efforts together into a cohesive and impactful event.  
+The entire integration, testing and management of the event was expertly handled by **Pranav Veeraghanta**, **Event Coordinator** for _Uncharted Lost Voyage_ and _Tech Head_ at **Gradient**. His leadership ensured a seamless experience for all participants, bringing the team's efforts together into a cohesive and impactful event.  
 
 ## About the Event  
-**Uncharted: Lost Voyage** is a multi-stage treasure hunt designed to test participants' problem-solving skills, creativity, and teamwork. Each stage features unique puzzles that must be solved to progress further. The event was developed by the Gradient team with a mix 
+**Uncharted Lost Voyage** is a multi-stage treasure hunt designed to test participants' problem-solving skills, creativity, and teamwork. Each stage features unique puzzles that must be solved to progress further. The event was developed by the Gradient team with a mix 
 of technical expertise and imaginative puzzle design.  
 
 ## Puzzle Creators  
@@ -29,7 +28,7 @@ To access the treasure hunt online, visit [uncharted3.gradientaiml.tech](http://
 
 ### Running Locally  
 To run the project locally:  
-- Clone the repository using `git clone https://github.com/yourusername/uncharted-lost-voyage.git` and navigate to the project directory using `cd uncharted-lost-voyage`.  
+- Clone the repository using `git clone https://github.com/pranav1211/uncharted-lost-voyage.git` and navigate to the project directory using `cd uncharted-lost-voyage`.  
 - Install dependencies with `npm install`, `yarn install`, or `bun install` depending on your package manager.  
 - Start the development server with `npm run dev`, `yarn dev`, or `bun dev`.  
 

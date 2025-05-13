@@ -160,7 +160,7 @@ export default function UnchartedLostVoyage() {
               className="py-2 px-4 bg-gradient-to-r from-blue-400 to-blue-600 rounded-md transition-all duration-300 text-white hover:shadow-lg hover:shadow-blue-500/20 text-base md:text-lg"
               style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
             >
-              Tag @Pranvisda1 on Twitter
+              Tag @Pranavisda1 on Twitter
             </a>
           </div>
         </div>
