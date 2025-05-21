@@ -121,6 +121,7 @@ export default function UnchartedLostVoyage() {
                 <li>Sahana BK</li>
                 <li>Channabasavanna</li>
               </ul>
+              Check out the source code : <a href="https://github.com/pranav1211/Uncharted-3">Github</a>
             </div>
           </div>
         </div>
@@ -153,7 +154,7 @@ export default function UnchartedLostVoyage() {
             >
               Tag Gradient Club on LinkedIn
             </a>
-            <a
+            {/* <a
               href="https://twitter.com/Pranavisda1"
               target="_blank"
               rel="noopener noreferrer"
@@ -161,7 +162,7 @@ export default function UnchartedLostVoyage() {
               style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
             >
               Tag @Pranavisda1 on Twitter
-            </a>
+            </a> */}
           </div>
         </div>
 
