@@ -45,7 +45,7 @@ export default function Home() {
       {showClue && (
         <div className="secret-box mt-4 text-green-600 font-semibold">
           The hands of time do more than tell — they point to secrets in plain sight. Numbers you see may not be what they seem.
-          Look at the clock. Think in encryption. Now, what if time spoke in base 32?
+          Look at the clock. Think in encryption. Now, what if time spoke in base 32? Use this site do decode : <a href="https://emn178.github.io/online-tools/base32_encode.html">Site</a> If the code does not work, try to refresh the page.
         </div>
       )}
 
