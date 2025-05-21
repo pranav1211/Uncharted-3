@@ -35,6 +35,9 @@ To run the project locally:
 
 Once the server is running, open [http://localhost:3000](http://localhost:3000) in your browser to access the treasure hunt.  
 
+## Journey
+Read more about Pranav's journey with regrad to this event on his blog : https://medium.com/@beyondmebtw/from-trenches-to-triumph-uncharted-lost-voyage-c0c6729f86c9
+
 ## Acknowledgments  
 We extend our gratitude to all the participants of **Uncharted: Lost Voyage** and the Utsav Ananta 2025 organizers for their support. This event was a collaborative effort powered by Gradient Club and we are proud to share it with you.  
 
