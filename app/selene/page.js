@@ -34,7 +34,7 @@ export default function Home() {
         <p>
         To proceed, just type the word into the screen, the word is one that connects pages — it is a synonym of connect.
         </p>
-        <Image 
+        <Image  
           src={clockImg}
           alt="First puzzle clue" 
           width={500} 
@@ -45,7 +45,7 @@ export default function Home() {
       {showClue && (
         <div className="secret-box mt-4 text-green-600 font-semibold">
           The hands of time do more than tell — they point to secrets in plain sight. Numbers you see may not be what they seem.
-          Look at the clock. Think in encryption. Now, what if time spoke in base 32? Use this site do decode : <a href="https://emn178.github.io/online-tools/base32_encode.html">Site</a> If the code does not work, try to refresh the page.
+          Look at the clock. Think in encryption. Now, what if time spoke in base 32? Use this site do decode : <strong><a href="https://emn178.github.io/online-tools/base32_encode.html">https://emn178.github.io/online-tools/base32_encode.html</a></strong> If the code does not work, try to refresh the page.
         </div>
       )}
 
