@@ -121,7 +121,8 @@ export default function UnchartedLostVoyage() {
                 <li>Sahana BK</li>
                 <li>Channabasavanna</li> 
               </ul>
-              Check out the source code : <a href="https://github.com/pranav1211/Uncharted-3">Github</a>
+              <br />
+              <div className="font-bold">Check out the source code : <a href="https://github.com/pranav1211/Uncharted-3">Github.com</a></div>
             </div>
           </div>
         </div>
