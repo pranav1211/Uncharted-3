@@ -223,7 +223,7 @@ export default function UnchartedLostVoyage() {
                 }}
                 onClick={() => {
                   setRulesOpen(false);
-                  window.open('https://uncharted3.gradientaiml.tech/scroll');
+                  window.open('https://uncharted3.gradientaiml.tech/uncharted');
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.boxShadow = '0 0 15px rgba(16, 185, 129, 0.8)';
