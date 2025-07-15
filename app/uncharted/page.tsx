@@ -88,7 +88,7 @@ const StartPage: React.FC = () => {
           <DecryptedText
             text="You have been summoned to traverse the labyrinth of digital mysteries, where ancient codes guard forbidden knowledge and only the worthy shall prevail."
             animateOn="view"
-            revealDirection="left"
+            revealDirection="start"
             speed={30}
             maxIterations={15}
             className="text-gray-200"
