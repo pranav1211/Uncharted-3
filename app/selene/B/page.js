@@ -59,7 +59,7 @@ export default function SudokuPage() {
   const handleCheck = () => {
     if (isSolved()) {
       alert('🎉 Sudoku Solved! But You were Distracted, This is not it');
-      router.push('https://gradientaiml.tech/selene'); // redirect to original page
+      router.push('https://uncharted-3.vercel.app/selene'); // redirect to original page
     } else {
       alert('❌ Not solved correctly yet!');
     }

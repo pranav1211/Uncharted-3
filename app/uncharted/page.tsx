@@ -96,7 +96,7 @@ const StartPage: React.FC = () => {
         </div>
       )}
 
-      <button className="start-button relative z-10 px-12 py-6 bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 text-white font-bold text-xl md:text-2xl rounded-2xl shadow-2xl hover:from-purple-700 hover:via-purple-800 hover:to-purple-900 transition-all duration-500 border-2 border-purple-500 hover:border-purple-400 hover:shadow-purple-500/50 transform hover:scale-105 active:scale-95 backdrop-blur-sm" onClick={() => window.location.href = 'https://uncharted3.gradientaiml.tech/scroll'}>
+      <button className="start-button relative z-10 px-12 py-6 bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 text-white font-bold text-xl md:text-2xl rounded-2xl shadow-2xl hover:from-purple-700 hover:via-purple-800 hover:to-purple-900 transition-all duration-500 border-2 border-purple-500 hover:border-purple-400 hover:shadow-purple-500/50 transform hover:scale-105 active:scale-95 backdrop-blur-sm" onClick={() => window.location.href = 'https://uncharted-3.vercel.app/scroll'}>
         <span className="relative z-10 tracking-wide">BEGIN YOUR ODYSSEY</span>
         <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-purple-600/20 rounded-2xl blur-sm animate-pulse"></div>
       </button>

@@ -25,7 +25,7 @@ The treasure hunt was brought to life through the collective efforts of our tale
 ## How to Run  
 
 ### Running Online  
-To access the treasure hunt online, visit [uncharted3.gradientaiml.tech](http://uncharted3.gradientaiml.tech).  
+To access the treasure hunt online, visit [uncharted-3.vercel.app](https://uncharted-3.vercel.app).  
 
 ### Running Locally  
 To run the project locally:  

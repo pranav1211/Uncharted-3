@@ -206,7 +206,7 @@ export default function UnchartedLostVoyage() {
             <ul className="list-none text-left space-y-3 mb-6">
               {["You can use Google Search, but avoid AI tools for a more fun experience.",
                 "Use decoding and encoding tools as needed.",
-                "Each puzzle gives a password, take that password and affix it to the end of the URL, do not change uncharted3.gradientaiml.tech, that is constant"].map((rule, index) => (
+                "Each puzzle gives a password, take that password and affix it to the end of the URL, do not change uncharted-3.vercel.app, that is constant"].map((rule, index) => (
                   <li key={index} className="flex items-start text-blue-100">
                     <span className="inline-block mr-2 mt-1 text-purple-400">◆</span>
                     <span>{rule}</span>
@@ -223,7 +223,7 @@ export default function UnchartedLostVoyage() {
                 }}
                 onClick={() => {
                   setRulesOpen(false);
-                  window.open('https://uncharted3.gradientaiml.tech/uncharted');
+                  window.open('https://uncharted-3.vercel.app/uncharted');
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.boxShadow = '0 0 15px rgba(16, 185, 129, 0.8)';

@@ -146,7 +146,7 @@ export default function Home() {
           {/* Left Portal */}
           <Portal 
             color="blue" 
-            href="https://gradientaiml.tech/branchone"
+            href="https://uncharted-3.vercel.app/branchone"
             isHovered={hoverLeft}
             onHoverChange={setHoverLeft}
           />
@@ -154,7 +154,7 @@ export default function Home() {
           {/* Right Portal */}
           <Portal 
             color="orange" 
-            href="https://gradientaiml.tech/branchtwo"
+            href="https://uncharted-3.vercel.app/branchtwo"
             isHovered={hoverRight}
             onHoverChange={setHoverRight}
           />
