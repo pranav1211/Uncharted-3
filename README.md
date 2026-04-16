@@ -46,5 +46,4 @@ We extend our gratitude to all the participants of **Uncharted: Lost Voyage** an
 
 For any queries or feedback, visit us at [gradient website](https://gradient-website-liart.vercel.app) or email **Pranav Veeraghanta** at [Pranave@BeyondMeBtw.com](mailto:pranav@beyondmebtw.com).
 
-!(Uncharted Lost Voyage full screen image)[https://gradient-content-server.vercel.app/content/utsav25/gallery/unc/ulvfs.png]
-
+<img src="https://gradient-content-server.vercel.app/content/utsav25/gallery/unc/ulvfs.png" alt="ULFS">
