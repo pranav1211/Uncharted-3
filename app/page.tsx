@@ -169,7 +169,7 @@ export default function UnchartedLostVoyage() {
 
         {/* View Answers Button */}
         <a
-          href="https://docs.google.com/spreadsheets/d/1kqMGGnIZ9MjnrBB9Xw2lE4Tc5S4-_jcsCcb_KHgPh2w/edit?usp=sharing"
+          href="https://github.com/pranav1211/Uncharted-3/blob/main/Uncharted%20Master%20sheet%20-%20participants.xlsx"
           className="px-8 py-3 rounded-md text-white font-bold transition-all duration-300 text-lg"
           target="_blank"
           style={{
