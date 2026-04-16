@@ -44,4 +44,7 @@ View the answer key and master sheet on how to solve the puzzles via this excel 
 ## Acknowledgments  
 We extend our gratitude to all the participants of **Uncharted: Lost Voyage** and the Utsav Ananta 2025 organizers for their support. This event was a collaborative effort powered by Gradient Club and we are proud to share it with you.  
 
-For any queries or feedback, visit us at [gradientaiml.tech](https://gradientaiml.tech) or email **Pranav Veeraghanta** at [pranavv.ai22@bmsce.ac.in](mailto:pranavv.ai22@bmsce.ac.in).
+For any queries or feedback, visit us at [gradient website](https://gradient-website-liart.vercel.app) or email **Pranav Veeraghanta** at [Pranave@BeyondMeBtw.com](mailto:pranav@beyondmebtw.com).
+
+
+
